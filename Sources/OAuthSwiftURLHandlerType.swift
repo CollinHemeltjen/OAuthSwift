@@ -211,7 +211,9 @@ import AuthenticationServices
 
         public func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
             // "Done" pressed
+            #if !targetEnvironment(macCatalyst)
             self.clearObservers()
+            #endif
             self.delegate?.safariViewControllerDidFinish?(controller)
         }
 
